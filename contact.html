@@ -10,16 +10,24 @@
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('headerNavigation').innerHTML = '<a href="index.html">Home</a> • <a href="blogs.html">Blogs</a>';
+            
+            var el = document.querySelector('.name[data-href]');
+            if (el) {
+                function go() { window.location.href = el.getAttribute('data-href'); }
+                el.addEventListener('click', go);
+                el.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+            }
+        });
+    </script>
 </head>
 <body>
     <div class="container">
-        <header class="header header--contact">
-            <h1 class="name name--link">
-                <a href="index.html">Atho' O Atho'</a>
-            </h1>
-            <p class="contact-page-back">
-                <a href="index.html">Home « Atho' O Atho'</a>
-            </p>
+        <header class="header">
+            <h1 class="name" role="link" tabindex="0" data-href="index.html">Atho' O Atho'</h1>
+            <p class="contact" id="headerNavigation"></p>
         </header>
 
         <div class="divider"></div>
@@ -34,9 +42,13 @@
 
         <div class="divider"></div>
 
-        <footer class="footer">
-            <p>Made with <span class="footer-heart" aria-hidden="true"><i class="fa-solid fa-heart"></i></span> from <span class="footer-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 14" width="20" height="14" role="img" aria-label="Indonesia"><rect width="20" height="7" fill="#E70011"/><rect y="7" width="20" height="7" fill="#fff"/></svg></span></p>
-        </footer>
+        <div id="footerContainer"></div>
     </div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footerContainer').innerHTML = data)
+            .catch(err => console.error('Failed to load footer:', err));
+    </script>
 </body>
 </html>
