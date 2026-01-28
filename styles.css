@@ -138,8 +138,13 @@ a:focus-visible {
 .divider {
     height: 0;
     border: none;
-    border-top: 2px dotted var(--dotted);
+    border-top: 4px dotted var(--dotted);
     margin: 48px 0;
+}
+
+.divider--align-social {
+    max-width: 480px;
+    margin: 48px auto;
 }
 
 /* ----- Projects (5 cards: image, label, description – same layout) ----- */
@@ -224,11 +229,11 @@ a:focus-visible {
     margin-bottom: 48px;
 }
 
-/* Active social: whole block centered, heading inside */
+/* Active social: whole block centered, content aligned left */
 .social-accounts-inner {
     max-width: 480px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 
 .social-accounts-inner h2 {
@@ -249,7 +254,7 @@ a:focus-visible {
     max-width: 480px;
     margin: 48px auto 0;
     padding-top: 48px;
-    border-top: 2px dotted var(--dotted);
+    border-top: 3px dotted var(--dotted);
     text-align: left;
 }
 
@@ -315,6 +320,15 @@ a:focus-visible {
     color: var(--text-muted);
     text-align: left;
     padding-left: 50px; /* align with Facebook/Instagram text (36px icon + 14px gap) */
+}
+
+/* Social links: same width as social-accounts-inner, aligned with its <p> */
+.social-section > .social-links {
+    max-width: 480px;
+    margin: 24px auto 0;
+    list-style: disc;
+    padding-left: 1.4em;
+    text-align: left;
 }
 
 .other-social-inner .social-links {
@@ -383,7 +397,7 @@ a:focus-visible {
 }
 
 .contact-page-email {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
 }
 
 .contact-page-email a {
@@ -417,7 +431,7 @@ a:focus-visible {
 .footer {
     text-align: center;
     padding-top: 32px;
-    border-top: 2px dotted var(--dotted);
+    border-top: 4px dotted var(--dotted);
     font-size: 0.9rem;
     color: var(--text-muted);
 }
