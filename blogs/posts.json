@@ -1,0 +1,16 @@
+[
+  {
+    "title": "First post",
+    "date": "2025-01-28",
+    "slug": "2025-01-28",
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nCurabitur pretium tincidunt lacus. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien proin quam etiam ultrices. So on and so forth, lorem ipsum dolor sit amet."
+  },
+  {
+    "title": "Second post",
+    "date": "2025-02-01",
+    "slug": "2025-02-01",
+    "excerpt": "Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis vulputate metus.",
+    "body": "Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis vulputate metus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. Lorem ipsum and so on and so forth.\n\nAliquam erat volutpat. Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lac libero, posuere sit amet, vestibulum at, eros. Etiam so on and so forth, lorem ipsum."
+  }
+]

@@ -396,6 +396,20 @@ a:focus-visible {
     line-height: 1.6;
 }
 
+.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+}
+
+.post-list li {
+    margin-bottom: 12px;
+}
+
+.post-list li p {
+    margin: 0;
+}
+
 .contact-page-email {
     font-size: 1.25rem;
 }

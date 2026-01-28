@@ -12,13 +12,86 @@
     <link rel="stylesheet" href="styles.css">
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('headerNavigation').innerHTML = '<a href="index.html">Home</a> • <a href="contact.html">Contact me</a>';
-            
+            document.getElementById('headerNavigation').innerHTML = '<a href="index.html">Home</a> • <a href="contact.html">Contact me</a> • <a href="blogs.html">Blogs</a>';
             var el = document.querySelector('.name[data-href]');
             if (el) {
                 function go() { window.location.href = el.getAttribute('data-href'); }
                 el.addEventListener('click', go);
                 el.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+            }
+            var allPosts = [];
+            fetch('blogs/posts.json')
+                .then(function(r) { return r.json(); })
+                .then(function(posts) {
+                    allPosts = posts;
+                    render();
+                    window.addEventListener('hashchange', render);
+                })
+                .catch(function(err) { console.error('Failed to load blogs:', err); });
+            function render() {
+                var hash = (location.hash || '').replace(/^#/, '');
+                var container = document.getElementById('blogsContent');
+                if (!container) return;
+                if (hash) {
+                    var idx = allPosts.findIndex(function(p) { return p.slug === hash; });
+                    var post = idx >= 0 ? allPosts[idx] : null;
+                    if (post) {
+                        document.title = post.title + ' « Atho\' O Atho\'';
+                        var prev = idx > 0 ? allPosts[idx - 1] : null;
+                        var next = idx < allPosts.length - 1 ? allPosts[idx + 1] : null;
+                        var prevHtml = prev ? '<a href="blogs.html#' + escapeHtml(prev.slug) + '">Previous</a>' : '<span style="color:var(--text-muted);">Previous</span>';
+                        var nextHtml = next ? '<a href="blogs.html#' + escapeHtml(next.slug) + '">Next</a>' : '<span style="color:var(--text-muted);">Next</span>';
+                        var navHtml = '<div class="blog-post-nav" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:0.95rem;"><span>' + prevHtml + '</span><span><a href="blogs.html">Index</a></span><span>' + nextHtml + '</span></div>';
+                        var parts = post.body.split(/\n\n/);
+                        var bodyHtml = parts.map(function(p) { return '<p class="contact-page-intro">' + escapeHtml(p) + '</p>'; }).join('');
+                        var dateStr = formatDate(post.date);
+                        container.innerHTML = navHtml +
+                            '<h1 class="contact-page-title">' + escapeHtml(post.title) + '</h1>' +
+                            '<p class="contact-page-intro" style="margin-bottom:0;font-size:0.95rem;color:var(--text-muted);">' + dateStr + '</p>' +
+                            '<div style="margin-top:20px">' + bodyHtml + '</div>' +
+                            '<p class="contact-page-intro"><a href="blogs.html">← Back to Blogs</a></p>';
+                        return;
+                    }
+                }
+                document.title = 'Blogs « Atho\' O Atho\'';
+                var intro = document.createElement('p');
+                intro.className = 'contact-page-intro';
+                intro.textContent = 'Thoughts, updates, and longer writing. New posts show up here when I publish them.';
+                var ul = document.createElement('ul');
+                ul.className = 'post-list';
+                allPosts.forEach(function(p) {
+                    var li = document.createElement('li');
+                    var a = document.createElement('a');
+                    a.href = 'blogs.html#' + p.slug;
+                    a.textContent = formatDate(p.date) + ': ' + p.title;
+                    li.appendChild(a);
+                    var excerpt = document.createElement('p');
+                    excerpt.className = 'contact-page-intro';
+                    excerpt.style.marginTop = '4px';
+                    excerpt.style.marginBottom = '16px';
+                    excerpt.textContent = p.excerpt;
+                    li.appendChild(excerpt);
+                    ul.appendChild(li);
+                });
+                container.innerHTML = '';
+                var h1 = document.createElement('h1');
+                h1.className = 'contact-page-title';
+                h1.textContent = 'Blogs';
+                container.appendChild(h1);
+                container.appendChild(intro);
+                container.appendChild(ul);
+            }
+            function escapeHtml(s) {
+                var d = document.createElement('div');
+                d.textContent = s;
+                return d.innerHTML;
+            }
+            function formatDate(iso) {
+                if (!iso) return '';
+                var d = new Date(iso);
+                if (isNaN(d.getTime())) return iso;
+                var m = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                return m[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
             }
         });
     </script>
@@ -33,12 +106,10 @@
         <div class="divider"></div>
 
         <section class="contact-page">
-            <h1 class="contact-page-title">Blogs</h1>
-            <p class="contact-page-intro">Thoughts, updates, and longer writing. New posts show up here when I publish them.</p>
-            <p class="contact-page-intro">Nothing here yet — check back later.</p>
+            <div id="blogsContent">
+                <p class="contact-page-intro">Loading…</p>
+            </div>
         </section>
-
-        <div class="divider"></div>
 
         <div id="footerContainer"></div>
     </div>
