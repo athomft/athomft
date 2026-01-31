@@ -1,16 +1,9 @@
 [
   {
-    "title": "First post",
-    "date": "2025-01-28",
-    "slug": "2025-01-28",
-    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nCurabitur pretium tincidunt lacus. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien proin quam etiam ultrices. So on and so forth, lorem ipsum dolor sit amet."
-  },
-  {
-    "title": "Second post",
-    "date": "2025-02-01",
-    "slug": "2025-02-01",
-    "excerpt": "Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis vulputate metus.",
-    "body": "Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis vulputate metus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. Lorem ipsum and so on and so forth.\n\nAliquam erat volutpat. Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lac libero, posuere sit amet, vestibulum at, eros. Etiam so on and so forth, lorem ipsum."
+    "title": "Story how I created Loan Note",
+    "date": "2025-01-31",
+    "slug": "2025-01-31",
+    "excerpt": "I kept forgetting who owed me what and how much I’d already been paid back, so I started scribbling notes and spreadsheets. That got messy, and I wanted something I could open on my phone and update quickly.",
+    "body": "I kept forgetting who owed me what and how much I’d already been paid back, so I started scribbling notes and spreadsheets. That got messy, and I wanted something I could open on my phone and update quickly. I decided to build a small web app: a place to create “loans,” add amounts and labels, and see totals update automatically. I built it with PHP and a simple database so I could host it myself and keep control of the data. I added basics first: register and login, a dashboard with a grand total, and loan details with entries you can mark as paid. Then I added currency settings so it works for different countries, and a profile so people could set a name and username. I wanted to support the project without ads, so I added a “premium” idea: one-time contributions that unlock deleting loans and entries and changing your username more than once; I handle verification and proofs manually. I also needed a way for users to get help and for me to manage things, so I added a contact form, message threads with replies, and a red dot on the user icon when there’s a new reply. For myself, I built an admin area to handle pending payments, contact messages, and account reactivation or deletion requests. I tweaked the layout so the contact page and dashboard felt clean and worked on mobile, and I wrote a short user guide and deployment notes so others could run it too. Loan Note is the app I use to stop losing track of who owes what—and the one I built step by step to solve that problem."
   }
 ]
