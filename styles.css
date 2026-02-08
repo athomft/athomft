@@ -58,10 +58,6 @@ body {
     line-height: 1.15;
 }
 
-.name[role="link"] {
-    cursor: pointer;
-}
-
 .name--link a {
     font: inherit;
     color: inherit;
@@ -80,23 +76,18 @@ body {
     color: var(--text-muted);
 }
 
-/* Links – highlight-on-hover style (from example.css) */
+/* Links – highlight-on-hover style */
 .contact a,
 .project-card p a,
 .social-account a,
 .contact-note a,
 .social-links a,
 .footer a,
-.contact-page a,
-.name--link a {
+.contact-page a {
     text-decoration: none;
     white-space: nowrap;
     color: #121314;
     position: relative;
-}
-
-.name--link a {
-    color: var(--text);
 }
 
 .contact a::after,
@@ -105,8 +96,7 @@ body {
 .contact-note a::after,
 .social-links a::after,
 .footer a::after,
-.contact-page a::after,
-.name--link a::after {
+.contact-page a::after {
     content: "";
     position: absolute;
     z-index: -1;
@@ -124,8 +114,7 @@ body {
 .contact-note a:hover::after,
 .social-links a:hover::after,
 .footer a:hover::after,
-.contact-page a:hover::after,
-.name--link a:hover::after {
+.contact-page a:hover::after {
     top: 0%;
 }
 
@@ -135,6 +124,7 @@ a:focus-visible {
 }
 
 /* ----- Divider (dotted blue) ----- */
+hr.divider,
 .divider {
     height: 0;
     border: none;
@@ -142,6 +132,7 @@ a:focus-visible {
     margin: 48px 0;
 }
 
+hr.divider--align-social,
 .divider--align-social {
     max-width: 480px;
     margin: 48px auto;
